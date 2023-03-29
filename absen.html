@@ -26,6 +26,11 @@
 
 		<div id="map"></div>
 
+		<div class="text-center mt-3">
+			<button class="btn btn-primary" id="tombol_masuk">Absen Masuk</button>
+			<button class="btn btn-warning" id="tombol_pulang">Absen Pulang</button>
+		</div>
+		
 
 		
 		<nav class="navbar navbar-dark bg-info navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none">
@@ -84,8 +89,10 @@
 			//Memasukkan koordinat kedalam input field
 			lat.value = posisi.coords.latitude;
         	lng.value = posisi.coords.longitude;
+
 			console.log("Lat : "+lat.value);
 			console.log("Lng : "+lng.value);
+
 			var lat_kantor = "0.5070858042014642";
 			var lng_kantor = "101.44780880429863";
 			
