@@ -26,7 +26,6 @@
 
 		<div id="map"></div>
 
-sd
 
 		
 		<nav class="navbar navbar-dark bg-info navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none">
@@ -74,8 +73,9 @@ sd
 		var lat = document.getElementById('lat');
 		var lng = document.getElementById('lng');
 
-		//Kalau permision  GPS di allow kan
+		//Kalau permision  GPS di allow kan 
 		if(navigator.geolocation){
+			//Menggunakan Geo Location
 			navigator.geolocation.getCurrentPosition(kalauSukses, kalauGagal);
 		}
 
@@ -84,6 +84,10 @@ sd
 			//Memasukkan koordinat kedalam input field
 			lat.value = posisi.coords.latitude;
         	lng.value = posisi.coords.longitude;
+			console.log("Lat : "+lat.value);
+			console.log("Lng : "+lng.value);
+			var lat_kantor = "0.5070858042014642";
+			var lng_kantor = "101.44780880429863";
 			
 			//Menambahkan koordinat ke dalam peta
 			var map = L.map('map').setView([posisi.coords.latitude, posisi.coords.longitude], 16);
@@ -96,6 +100,13 @@ sd
 
 			//Menambahkan marker dalam peta sesuai koordinat
 			var marker = L.marker([posisi.coords.latitude, posisi.coords.longitude]).addTo(map);
+
+			var circle = L.circle([lat_kantor, lng_kantor], {
+				color: 'red',
+				fillColor: '#f03',
+				fillOpacity: 0.5,
+				radius: 50
+			}).addTo(map);
 		}
 
 		//Fungsi kalau lokasi gagal ditemukan
