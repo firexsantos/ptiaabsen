@@ -27,11 +27,17 @@
 		<div id="map"></div>
 
 		<div class="text-center mt-3">
-			<button class="btn btn-primary" id="tombol_masuk">Absen Masuk</button>
-			<button class="btn btn-warning" id="tombol_pulang">Absen Pulang</button>
+			<button class="btn btn-primary" id="tombol_masuk" onclick="proses_in()">Absen Masuk</button>
+			<button class="btn btn-warning" id="tombol_pulang" onclick="proses_out()">Absen Pulang</button>
 		</div>
 		
+		<audio id="notifikasi_in">
+			<source src="audio/in.mp3" type="audio/mpeg">
+		</audio>
 
+		<audio id="notifikasi_out">
+			<source src="audio/out.mp3" type="audio/mpeg">
+		</audio>
 		
 		<nav class="navbar navbar-dark bg-info navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none">
 		<ul class="navbar-nav nav-justified w-100">
@@ -64,6 +70,20 @@
 	  </nav>
 
 	<script>
+		//Menginisialkan Audio
+		var notifikasi_in = document.getElementById("notifikasi_in");
+		var notifikasi_out = document.getElementById("notifikasi_out");
+
+		function proses_in(){
+			//Menjalankan audio absen masuk
+			notifikasi_in.play();
+		}
+
+		function proses_out(){
+			//Menjalankan audio absen keluar
+			notifikasi_out.play();
+		}
+
 		//Menampilkan Kamera
 		Webcam.set({
 			height:320,
