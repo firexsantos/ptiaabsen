@@ -12,13 +12,14 @@
 	 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
+     
+     <script src="assets/js/jquery.min.js" ></script>
 
 	 <style>
 		#map { height: 180px; }
 	 </style>
     </head>
     <body>
-
 		<div id="kamera"></div>
 
 		<input id="lat" type="hidden">
@@ -70,6 +71,8 @@
 	  </nav>
 
 	<script>
+		$("#nama_orangnya").html(window.localStorage.getItem('nm_user'));
+		
 		//Menginisialkan Audio
 		var notifikasi_in = document.getElementById("notifikasi_in");
 		var notifikasi_out = document.getElementById("notifikasi_out");

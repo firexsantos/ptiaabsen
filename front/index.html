@@ -30,17 +30,30 @@
 		</div>
 
 		<script>
+			var url = "http://localhost/ptiaabsen/front/";
 			$("#tombolproses").click(function(){
 				$.ajax({
 					type: "POST",
 					url: "http://localhost/ptiaabsen/back/proseslogin.php",
 					data: {email: $("#email").val(), password: $("#password").val()},
 					success: function(respon){
-						console.log(respon[0].status);
+						console.log(respon[0].nm_user);
 						if(respon[0].status == "sukses"){
-							$("pesanlogin").html("test"+respon[0].pesan);
+							$("#pesanlogin").html(respon[0].pesan);
+							window.localStorage.setItem('login', 'true');
+							window.localStorage.setItem('id_user', respon[0].status);
+							window.localStorage.setItem('nm_user', respon[0].nm_user);
+							window.localStorage.setItem('email', respon[0].email);
+							console.log(window.localStorage.getItem('email'));
+							setTimeout(function() {
+								window.location.href = url+"absen.html";
+							}, 3000);
 						}else{
-							$("pesanlogin").html("test"+respon[0].pesan);
+							$("#pesanlogin").html(respon[0].pesan);
+							window.localStorage.setItem('login', 'false');
+							window.localStorage.setItem('id_user', "");
+							window.localStorage.setItem('nm_user', "");
+							window.localStorage.setItem('email', "");
 						}
 					}
 				});
